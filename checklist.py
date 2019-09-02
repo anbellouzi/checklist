@@ -25,7 +25,7 @@ def list_all_items():
         index += 1
 
 def mark_completed(index):
-    checklist[index] = "√"+checklist[index]
+    checklist[index] = "√ "+checklist[index]
 
 # user input
 def user_input(prompt):
