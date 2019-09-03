@@ -10,6 +10,7 @@ Instruction:
 4. U to update an item
 5. D to remove an item
 6. P to display list
+7. F to mark completed
 7. Q to exit
 
-Description: Program checks if list is empty and if user enters appropriate input, then processed to add to list, read, update, display and remove. Program handles inappropriate user input 
+Description: Program checks if list is empty and if user enters appropriate input, then processed to add to list, read, update, display and remove. Program handles inappropriate user input
