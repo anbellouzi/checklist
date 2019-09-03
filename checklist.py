@@ -27,6 +27,11 @@ def list_all_items():
 def mark_completed(index):
     checklist[index] = "√ "+checklist[index]
 
+def mark_not_completed(index):
+    item = checklist[index]
+    checklist[index] = item[1:10000]
+
+
 # user input
 def user_input(prompt):
     user_input = input(prompt)
@@ -81,7 +86,14 @@ def select(function_code):
             index = user_input("Index of item you\033[0;32m completed\033[0m: ")
             index = is_number(index)
             index = out_of_range(index)
-            mark_completed(int(index))
+
+            item = checklist[int(index)]
+
+            if(item[0] == '√'):
+                mark_not_completed(int(index))
+            else:
+                mark_completed(int(index))
+
             list_all_items()
 
     elif function_code.capitalize() == "P":
