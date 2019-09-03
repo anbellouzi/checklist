@@ -21,7 +21,7 @@ def destroy(index):
 def list_all_items():
     index = 0
     for list_item in checklist:
-        print("{} {}".format(index, list_item))
+        print("\033[0;32m{} {}\033[0m".format(index, list_item))
         index += 1
 
 def mark_completed(index):
@@ -55,13 +55,13 @@ def out_of_range(index):
 def select(function_code):
     if function_code.capitalize() == "C":
         #Create item in checklist here
-        item = user_input("Add to list: ")
+        item = user_input("\033[0;32mAdd\033[0m to list: ")
         create(item)
 
     elif function_code.capitalize() == "R":
         # Read item in checklist here
         if(is_empty() == False):
-            index = user_input("Index of item you want to read: ")
+            index = user_input("Index of item you want to\033[36;6;36m read\033[0m: ")
             index = is_number(index)
             index = out_of_range(index)
             print(read(int(index)))
@@ -69,10 +69,19 @@ def select(function_code):
     elif function_code.capitalize() == "D":
         # delete item in checklist here
         if(is_empty() == False):
-            index = user_input("Index of item you want to delete: ")
+            index = user_input("Index of item you want to\033[37;0;37m delete\033[0m: ")
             index = is_number(index)
             index = out_of_range(index)
             destroy(int(index))
+            list_all_items()
+
+    elif function_code.capitalize() == "F":
+        # delete item in checklist here
+        if(is_empty() == False):
+            index = user_input("Index of item you\033[0;32m completed\033[0m: ")
+            index = is_number(index)
+            index = out_of_range(index)
+            mark_completed(int(index))
             list_all_items()
 
     elif function_code.capitalize() == "P":
@@ -82,7 +91,7 @@ def select(function_code):
     elif function_code.capitalize() == "U":
         # Print all items here
         if(is_empty() == False):
-            index = user_input("Index of item you want to update: ")
+            index = user_input("Index of item you want to \033[35;6;35mupdate\033[0m: ")
             index = is_number(index)
             index = out_of_range(index)
             item = user_input("Enter new item: ")
@@ -105,7 +114,7 @@ running = True
 while running:
 
     selection = user_input(
-        "Press C to add to list, R to Read from list, U to update an item, D to remove an item, P to display list, and Q to exit: ")
+        "Press C to add to list,\033[36;6;36m R to Read\033[0m from list,\033[35;6;35m U  to update \033[0m an item,\033[37;0;37m D to remove\033[0m an item,\033[34;6;34m P to display \033[0m list,\033[0;32m F to complete\033[0m and\033[30;6;30m Q to exit\033[0m: ")
     running = select(selection)
 
 
