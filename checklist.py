@@ -62,6 +62,7 @@ def select(function_code):
         #Create item in checklist here
         item = user_input("\033[0;32mAdd\033[0m to list: ")
         create(item)
+        list_all_items()
 
     elif function_code.capitalize() == "R":
         # Read item in checklist here
@@ -83,7 +84,7 @@ def select(function_code):
     elif function_code.capitalize() == "F":
         # delete item in checklist here
         if(is_empty() == False):
-            index = user_input("Index of item you\033[0;32m completed\033[0m: ")
+            index = user_input("Index of item you want to\033[0;32m check/uncheck\033[0m: ")
             index = is_number(index)
             index = out_of_range(index)
 
@@ -98,7 +99,9 @@ def select(function_code):
 
     elif function_code.capitalize() == "P":
         # Print all items here
-        list_all_items()
+        if not is_empty():
+            list_all_items()
+
 
     elif function_code.capitalize() == "U":
         # Print all items here
@@ -126,7 +129,7 @@ running = True
 while running:
 
     selection = user_input(
-        "Press C to add to list,\033[36;6;36m R to Read\033[0m from list,\033[35;6;35m U  to update \033[0m an item,\033[37;0;37m D to remove\033[0m an item,\033[34;6;34m P to display \033[0m list,\033[0;32m F to complete\033[0m and\033[30;6;30m Q to exit\033[0m: ")
+        "Press\033[37;1;42m C to add \033[0m to list,\033[36;0;36m R to Read\033[0m from list,\033[35;0;35m U to update \033[0m an item,\033[31;6;31m D to remove\033[0m an item,\033[33;6;33m P to display \033[0m list,\033[0;32m F to check/uncheck\033[0m and \033[37;1;41m Q to exit \033[0m: ")
     running = select(selection)
 
 
